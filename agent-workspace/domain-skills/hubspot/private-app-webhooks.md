@@ -1,6 +1,6 @@
 # HubSpot — editing a Private App's webhook subscriptions
 
-For adding or removing property-change subscriptions on a Private App (the v3 webhook surface). Pairs with `private-app-creation.md`; assumes the app already exists.
+For adding or removing property-change subscriptions on a Private App (the v3 webhook surface). Assumes the app already exists.
 
 ## URL map
 
@@ -68,7 +68,7 @@ After **Commit changes**, the page redirects to the app detail view (no `/webhoo
 
 ### Cache delay claim: "up to 5 minutes"
 
-HubSpot's banner says "Webhook settings can be cached for up to five minutes. When making changes to the webhook URL, concurrency limit, or subscription settings, it may take up to five minutes to see your changes go into effect." Observed reality: a new subscription delivered events within seconds in one test (zap 4 migration). Don't *rely* on the 5-min ceiling for cutover ordering — assume it could be near-instant.
+HubSpot's banner says "Webhook settings can be cached for up to five minutes. When making changes to the webhook URL, concurrency limit, or subscription settings, it may take up to five minutes to see your changes go into effect." Observed reality: a new subscription delivered events within seconds in one test. Don't *rely* on the 5-min ceiling for cutover ordering — assume it could be near-instant.
 
 ## Verification
 
@@ -93,7 +93,7 @@ Adjust the regex to your property naming. The "no space" filter excludes the hum
 
 ## What this skill doesn't cover
 
-- The `expanded object support` beta toggle in the drawer — unused for current portfolio work; leave OFF.
+- The `expanded object support` beta toggle in the drawer — not needed for standard property-change subscriptions; leave OFF unless the task explicitly requires it.
 - Removing a subscription (the `Unsubscribe` per-row button) — straightforward; same Commit-changes gate applies.
 - Webhook target URL changes — different flow (single text input near the top of the Webhooks tab), not covered here.
 - Concurrency limit — same; single text input.
